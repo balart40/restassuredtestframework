@@ -1,10 +1,11 @@
 package applications.hogwartsschool;
 
 import applications.BaseTest;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
+
+import static applications.contants.StatusCode.OK_200;
+import static io.restassured.RestAssured.given;
 
 @Slf4j
 public class GetTests extends BaseTest {
@@ -13,8 +14,12 @@ public class GetTests extends BaseTest {
     void test_getStudentsSuccessful() {
         log.info("Starting Test...");
 
-        Response response = RestAssured.get(url);
+        given()
+                .get(url)
+        .then()
+                .log().body()
+                .statusCode(OK_200);
 
-        log.info(response.getBody().asString());
+        log.info("Test finished successfully...");
     }
 }
