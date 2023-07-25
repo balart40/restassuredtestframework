@@ -2,8 +2,6 @@ package applications.hogwartsschool.tests;
 
 import applications.hogwartsschool.BaseTest;
 import applications.hogwartsschool.StudentPojo;
-import applications.hogwartsschool.request.RequestFactory;
-import io.restassured.RestAssured;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,12 +16,7 @@ import static org.hamcrest.Matchers.*;
 @Slf4j
 public class StudentTests extends BaseTest {
 
-    @BeforeClass
-    public void setup() {
-        RestAssured.baseURI = baseUri;
-        RestAssured.port = port;
-        requestFactory = new RequestFactory();
-    }
+
 
     @Test
     void test_getStudentsSuccessful() {
